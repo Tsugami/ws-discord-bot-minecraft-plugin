@@ -1,0 +1,16 @@
+name: ws-discord
+
+version: 1.0.0
+main: server.Main
+
+description: mensagem quando um usuário entra no servidor
+
+# We could place every author in the authors list, but chose not to for illustrative purposes
+
+# Also, having an author distinguishes that person as the project lead, and ensures their
+
+# name is displayed first
+
+author: Yslan Ramos
+
+# For more information on creating a plugin.yml, go here: https://bukkit.gamepedia.com/Plugin_YAML
