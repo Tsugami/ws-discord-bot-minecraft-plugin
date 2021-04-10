@@ -40,3 +40,6 @@ node_modules
 
 # Temporary files
 temp
+
+# Config files
+.env
