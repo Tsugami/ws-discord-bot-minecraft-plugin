@@ -9,13 +9,14 @@ const websocketEvents = require('./websocket-events');
 const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer);
-const bot = new DiscordBot(process.env.DISCORD_TOKEN, process.env.DISCORD_CHANNEL_ID);
+const discordBot = new DiscordBot(process.env.DISCORD_TOKEN, process.env.DISCORD_CHANNEL_ID);
 
-websocketEvents(io, bot);
+websocketEvents(io, discordBot);
 
 const PORT = process.env.PORT || 3333;
 
-httpServer.listen(PORT, () => {
-  console.info(`[INFO] (SERVER) http server listening at http://localhost:${PORT}`);
-  bot.connect();
-})
+discordBot.connect().then(() => {
+  httpServer.listen(PORT, () => {
+    console.info(`[INFO] (SERVER) http server listening at http://localhost:${PORT}`);
+  });
+});
