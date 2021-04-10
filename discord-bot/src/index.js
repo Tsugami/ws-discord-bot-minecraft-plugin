@@ -11,5 +11,5 @@ websocketEvents(io);
 const port = process.env.PORT || 3333;
 
 httpServer.listen(port, () => {
-  console.log(`http server listening at http://localhost:${port}`)
+  console.info(`[INFO] http server listening at http://localhost:${port}`)
 })
