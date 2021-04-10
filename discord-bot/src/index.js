@@ -16,6 +16,6 @@ const PORT = process.env.PORT || 3333;
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 
 httpServer.listen(PORT, () => {
-  console.info(`[INFO] http server listening at http://localhost:${PORT}`)
+  console.info(`[INFO] (SERVER) http server listening at http://localhost:${PORT}`)
   client.login(DISCORD_TOKEN)
 })
