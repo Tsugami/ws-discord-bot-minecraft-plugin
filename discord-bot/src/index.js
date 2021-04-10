@@ -9,7 +9,12 @@ const websocketEvents = require('./websocket-events');
 const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer);
-const discordBot = new DiscordBot(process.env.DISCORD_TOKEN, process.env.DISCORD_CHANNEL_ID);
+
+const onMessage = (payload) => {
+  io.emit('message', payload);
+}
+
+const discordBot = new DiscordBot(process.env.DISCORD_TOKEN, process.env.DISCORD_CHANNEL_ID, onMessage);
 
 websocketEvents(io, discordBot);
 

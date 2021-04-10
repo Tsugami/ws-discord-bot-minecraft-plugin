@@ -1,8 +1,9 @@
 
 const { Client } = require('eris');
 class DiscordBot {
-  constructor (discordBotToken, discordChannelID) {
+  constructor (discordBotToken, discordChannelID, onMessage) {
     this.discordChannelID = discordChannelID;
+    this.onMessage = onMessage;
     this._bot = new Client(discordBotToken);
   }
 
@@ -30,9 +31,13 @@ class DiscordBot {
   }
 
   _onMessage (msg) {
-    if (msg.content === 'ping') {
-      this._bot.createMessage(msg.channel.id, "Pong!");
+    const { content, createdAt, author, channel } = msg;
+
+    if (author.bot || channel.id !== this.discordChannelID) {
+      return;
     }
+
+    this.onMessage({ content, createdAt, username: author.username });
   }
 }
 module.exports = DiscordBot;
