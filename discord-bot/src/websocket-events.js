@@ -7,7 +7,7 @@ module.exports = (io, discordBot) => {
     }
 
     const content = `[${createdAt}] ${username} - ${message}`;
-    discordBot.sendMessage(content);
+    discordBot.createMessage(content);
   }
 
   io.on('connection', (socket) => {

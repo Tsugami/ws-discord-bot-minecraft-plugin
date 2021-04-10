@@ -21,7 +21,12 @@ class DiscordBot {
   }
 
   _onReady () {
-    console.log(`[INFO] (DISCORD) Logged in as ${client.user.tag}!`);
+    console.log(`[INFO] (DISCORD) Logged in as ${this.displayName}!`);
+  }
+
+  get displayName () {
+    const { username, discriminator } = this._bot.user;
+    return `${username}#${discriminator}`;
   }
 
   _onMessage (msg) {
